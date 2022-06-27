@@ -137,7 +137,7 @@ def train():
         with open(char_vocab_file, 'r') as f:
             char_vocab = json.load(f)
 
-    val_data, _ = io.load_relation_graphs_from_file(data_folder + val_set, load_vertices=True, data="nyt")
+    val_data, _ = io.load_relation_graphs_from_file(data_folder + val_set, load_vertices=True, data=dataset_name)
 
     check_data(training_data)
     check_data(val_data)
