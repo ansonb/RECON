@@ -54,8 +54,8 @@ def parse_args():
     args.add_argument("-emb_size", "--embedding_size", type=int,
                       default=50, help="Size of embeddings (if pretrained not used)")
     args.add_argument("-l", "--lr", type=float, default=1e-3)
-    args.add_argument("-g1hop", "--get_1hop", type=bool, default=False)
-    args.add_argument("-g2hop", "--get_2hop", type=bool, default=False)
+    args.add_argument("-g1hop", "--get_1hop", type=bool, default=True)
+    args.add_argument("-g2hop", "--get_2hop", type=bool, default=True)
     args.add_argument("-u2hop", "--use_2hop", type=bool, default=True)
     args.add_argument("-u1hop", "--use_1hop", type=bool, default=True)
     args.add_argument("-p2hop", "--partial_2hop", type=bool, default=False)
