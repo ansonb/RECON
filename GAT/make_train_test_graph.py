@@ -2,7 +2,7 @@ import os
 import json
 from tqdm import tqdm
 
-data_dir = '../data/GAT_entCtx_augmented/WikipediaWikidataDistantSupervisionAnnotations.v1.0'
+data_dir = '../data/WikipediaWikidataDistantSupervisionAnnotations.v1.0'
 context_data_file = '../data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entities_context.json'
 
 with open(context_data_file, 'r') as f:
