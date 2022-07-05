@@ -1343,13 +1343,16 @@ class Corpus:
               model_conv.final_entity_embeddings.data[current_unique_entities] = entity_embed.data[current_unique_entities]
               # model_conv.final_relation_embeddings.data = relation_embed.data
 
-            del model_gat
-            del model_entity_embedding
-            del test_indices
-            del current_batch_2hop_indices
-            del batch_test_adj_matrix
-            del node_neighbors_2hop_test
-            del entity_embeddings
+            try:
+                del model_gat
+                del model_entity_embedding
+                del test_indices
+                del current_batch_2hop_indices
+                del batch_test_adj_matrix
+                del node_neighbors_2hop_test
+                del entity_embeddings
+            except Exception as e:
+                print('Exception e: ', e)
           else:
             model_conv.final_entity_embeddings.data = model_gat.final_entity_embeddings.data
             model_conv.final_relation_embeddings.data = model_gat.final_relation_embeddings.data            
