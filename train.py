@@ -97,9 +97,9 @@ def train():
     if gat_embedding_file:
       with open(gat_embedding_file, 'r') as f:
           gat_embeddings = json.load(f)
+    if gat_relation_embedding_file:
       with open(gat_relation_embedding_file, 'r') as f:
           gat_relation_embeddings = json.load(f)
-    if gat_relation_embedding_file:
       W_ent2rel_all_rels = np.load(w_ent2rel_all_rels_file)
       with open(gat_entity2id_file, 'r') as f:
           gat_entity2idx = {}
