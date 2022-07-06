@@ -97,10 +97,6 @@ def train():
     if gat_embedding_file:
       with open(gat_embedding_file, 'r') as f:
           gat_embeddings = json.load(f)
-    if gat_relation_embedding_file:
-      with open(gat_relation_embedding_file, 'r') as f:
-          gat_relation_embeddings = json.load(f)
-      W_ent2rel_all_rels = np.load(w_ent2rel_all_rels_file)
       with open(gat_entity2id_file, 'r') as f:
           gat_entity2idx = {}
           data = f.read()
@@ -109,6 +105,18 @@ def train():
             line_arr = line.split(' ')
             if len(line_arr)==2:
               gat_entity2idx[line_arr[0].strip()] = line_arr[1].strip()
+    if gat_relation_embedding_file:
+      with open(gat_relation_embedding_file, 'r') as f:
+          gat_relation_embeddings = json.load(f)
+      W_ent2rel_all_rels = np.load(w_ent2rel_all_rels_file)
+      # with open(gat_entity2id_file, 'r') as f:
+      #     gat_entity2idx = {}
+      #     data = f.read()
+      #     lines = data.split('\n')
+      #     for line in lines:
+      #       line_arr = line.split(' ')
+      #       if len(line_arr)==2:
+      #         gat_entity2idx[line_arr[0].strip()] = line_arr[1].strip()
       with open(gat_relation2id_file, 'r') as f:
           gat_relation2idx = {}
           data = f.read()
