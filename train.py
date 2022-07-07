@@ -59,7 +59,7 @@ def train():
         context_data_file = "./data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entities_context.json"
     if "KGGAT" in model_name:
         gat_embedding_file = './models/GAT/WikipediaWikidataDistantSupervisionAnnotations/final_entity_embeddings.json'
-        gat_entity2id_file = './data/GAT/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entity2id.txt'
+        gat_entity2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entity2id.txt'
     if model_name=="RECON":
         # Point to the trained model/embedding/data files
         gat_relation_embedding_file = './models/GAT/WikipediaWikidataDistantSupervisionAnnotations/final_relation_embeddings.json'
