@@ -97,7 +97,7 @@ def parse_args():
     args.add_argument("-sv", "--save_vocab", type=str,
                       default='./vocab.pkl', help="The path of the file in which to save the vocab")
     args.add_argument("-ctx_file", "--entities_context_data_file", type=str,
-                      default='../WikipediaWikidataDistantSupervisionAnnotations.v1.0/entities_context_augmented.json', help="The path of the file in which to save the vocab")
+                      default='../data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entities_context_augmented.json', help="The path of the file in which to save the vocab")
     args.add_argument("-wrd_emb_dim", "--word_embed_dim", type=int,
                       default=50, help="The embedding dimension of the word vector")
     args.add_argument("-word_min_freq", "--word_min_freq", type=int,
