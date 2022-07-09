@@ -55,8 +55,8 @@ def parse_args():
     args.add_argument("-emb_size", "--embedding_size", type=int,
                       default=50, help="Size of embeddings (if pretrained not used)")
     args.add_argument("-l", "--lr", type=float, default=1e-3)
-    args.add_argument("-g1hop", "--get_1hop", type=bool, default=False)
-    args.add_argument("-g2hop", "--get_2hop", type=bool, default=False)
+    args.add_argument("-g1hop", "--get_1hop", type=bool, default=True)
+    args.add_argument("-g2hop", "--get_2hop", type=bool, default=True)
     args.add_argument("-u2hop", "--use_2hop", type=bool, default=True)
     args.add_argument("-u1hop", "--use_1hop", type=bool, default=True)
     args.add_argument("-p2hop", "--partial_2hop", type=bool, default=False)
@@ -93,7 +93,7 @@ def parse_args():
     
     # arguments for the entity embedding network
     args.add_argument("-ef", "--embedding_file", type=str,
-                      default='../glove.6B/glove.6B.50d.txt', help="The word2vec embedding file for initialising the entity embeddings")
+                      default='../data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/enwiki-20160501/glove.6B.50d.txt', help="The word2vec embedding file for initialising the entity embeddings")
     args.add_argument("-sv", "--save_vocab", type=str,
                       default='./vocab.pkl', help="The path of the file in which to save the vocab")
     args.add_argument("-ctx_file", "--entities_context_data_file", type=str,
@@ -123,8 +123,8 @@ entities_context_data_file = args.entities_context_data_file
 word_embed_dim = args.word_embed_dim
 word_min_freq = 2
 USE_VOCAB = False
-if not os.path.exists(args.outfolder):
-  os.makedirs(args.outfolder)
+if not os.path.exists(args.output_folder):
+  os.makedirs(args.output_folder)
 # %%
 
 class CustomEncoder(json.JSONEncoder):
