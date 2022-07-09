@@ -123,8 +123,8 @@ entities_context_data_file = args.entities_context_data_file
 word_embed_dim = args.word_embed_dim
 word_min_freq = 2
 USE_VOCAB = False
-if not os.path.exists(outfolder):
-  os.makedirs(outfolder)
+if not os.path.exists(args.outfolder):
+  os.makedirs(args.outfolder)
 # %%
 
 class CustomEncoder(json.JSONEncoder):
