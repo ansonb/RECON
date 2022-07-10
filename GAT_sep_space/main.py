@@ -785,10 +785,9 @@ def train_conv(args):
         model_conv.cuda()
         model_gat.cuda()
 
+    model_gat.load_state_dict(torch.load(os.path.join(args.output_folder,'trained_{}.pth'.format(args.epochs_gat - 1))))
     # model_gat.load_state_dict(torch.load(
-    #     '{}/trained_{}.pth'.format(args.output_folder, args.epochs_gat - 1)))
-    model_gat.load_state_dict(torch.load(
-        os.path.join(args.output_folder,'trained_{}.pth'.format(199))))
+        # os.path.join(args.output_folder,'trained_{}.pth'.format(199))))
     # if os.path.exists('{0}trained_{1}.pth'.format(args.output_folder + "conv/", 0)):
     #   model_conv.load_state_dict(torch.load(
     #       os.path.join(args.output_folder + "conv/",'trained_{}.pth'.format(0))))
@@ -843,8 +842,8 @@ def train_conv(args):
             # print(model_conv.final_entity_embeddings[0][:10],model_conv.final_entity_embeddings[50][:10],model_conv.final_entity_embeddings[100][:10])
             # print(model_conv.final_relation_embeddings[0][:10],model_conv.final_relation_embeddings[50][:10],model_conv.final_relation_embeddings[100][:10])
             start_time_iter = time.time()
-            # train_indices, train_values = Corpus_.get_iteration_batch(iters)
-            train_indices, train_values = Corpus_.get_iteration_batch(0)
+            train_indices, train_values = Corpus_.get_iteration_batch(iters)
+            # train_indices, train_values = Corpus_.get_iteration_batch(0)
             # print(train_indices.tolist())
             # print(train_indices[:3],train_indices[64:67],train_indices[128:131],train_indices[192:198])
             # print(train_values[:3],train_values[64:67],train_values[128:131],train_values[192:198])
