@@ -1235,7 +1235,7 @@ class Corpus:
         file.write('{} | {} | {} | {}\n'.format(e1,e2,pred_rels_list,actual_rels_list))
       file.close()
 
-    def get_validation_cnfmat(self, args, model_gat, model_entity_embedding, model_conv, unique_entities_train, unique_entities_test, reuse=True, use_ent_emb_module=False, use_gat_for_getting_test_entities=True):
+    def get_validation_cnfmat(self, args, model_gat, model_entity_embedding, model_conv, unique_entities_train, unique_entities_test, reuse=True, use_ent_emb_module=False, use_gat_for_getting_test_entities=True, gat_only=False):
 
         # Get the initial entity embeddings from the context
         CUDA = torch.cuda.is_available()
