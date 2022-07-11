@@ -1381,7 +1381,7 @@ class Corpus:
             end_idx = min((batch_iter+1)*test_batch_size,test_batch_pred.shape[0])
             
             cur_scores = model_conv.batch_test(torch.LongTensor(
-                test_batch_pred[start_idx:end_idx, :]).cuda())
+                test_batch_pred[start_idx:end_idx, :], model_gat).cuda())
 
             # print(torch.max(cur_scores),torch.min(cur_scores))
             # scores_arr.append(cur_scores)
