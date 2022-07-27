@@ -63,7 +63,8 @@ def train():
     if model_name=="RECON":
         # Point to the trained model/embedding/data files
         gat_relation_embedding_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/final_relation_embeddings.json'
-        gat_relation2id_file = './data/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
+        # gat_relation2id_file = './data/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
+        gat_relation2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
         w_ent2rel_all_rels_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/W_ent2rel.json.npy'
 
 
