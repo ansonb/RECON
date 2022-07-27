@@ -62,9 +62,9 @@ def train():
         gat_entity2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entity2id.txt'
     if model_name=="RECON":
         # Point to the trained model/embedding/data files
-        gat_relation_embedding_file = './models/GAT/WikipediaWikidataDistantSupervisionAnnotations/final_relation_embeddings.json'
-        gat_relation2id_file = './data/GAT/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
-        w_ent2rel_all_rels_file = './models/GAT/WikipediaWikidataDistantSupervisionAnnotations/W_ent2rel.json.npy'
+        gat_relation_embedding_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/final_relation_embeddings.json'
+        gat_relation2id_file = './data/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
+        w_ent2rel_all_rels_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/W_ent2rel.json.npy'
 
 
     # a file to store property2idx
