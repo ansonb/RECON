@@ -208,6 +208,7 @@ def train():
     print("Save property dictionary.")
     with open(os.path.join(save_folder, model_name + ".property2idx"), 'w') as outfile:
         outfile.write(str(property2idx))
+    idx2property = { v:k for k,v in property2idx.items() }
     print("Save entity dictionary.")
     with open(os.path.join(save_folder, model_name + ".entity2idx"), 'w') as outfile:
         outfile.write(str(entity2idx))
