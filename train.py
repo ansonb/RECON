@@ -62,6 +62,8 @@ def train():
         gat_entity2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entity2id.txt'
     if model_name=="RECON":
         # Point to the trained model/embedding/data files
+        gat_embedding_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/final_entity_embeddings.json'
+        gat_entity2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entity2id.txt'
         gat_relation_embedding_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/final_relation_embeddings.json'
         # gat_relation2id_file = './data/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
         gat_relation2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
