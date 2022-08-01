@@ -208,12 +208,12 @@ def test():
     result_file = open(os.path.join(result_folder, "_" + model_name), "w")
     test_f1 = 0.0
     for i in tqdm(range(int(test_as_indices[0].shape[0] / model_params['batch_size']))):
-        sentence_input = test_as_indices[0][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]]
-        entity_markers = test_as_indices[1][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]]
-        labels = test_as_indices[2][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]]
+        sentence_input = test_as_indices[0][i * model_params['batch_size']: (i + 1) * model_params['batch_size']]
+        entity_markers = test_as_indices[1][i * model_params['batch_size']: (i + 1) * model_params['batch_size']]
+        labels = test_as_indices[2][i * model_params['batch_size']: (i + 1) * model_params['batch_size']]
         if "RECON" in model_name:
-          entity_indices = test_as_indices[4][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]]
-          unique_entities, unique_entities_surface_forms, max_occurred_entity_in_batch_pos = context_utils.get_batch_unique_entities(test_as_indices[4][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]], test_as_indices[5][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]])
+          entity_indices = test_as_indices[4][i * model_params['batch_size']: (i + 1) * model_params['batch_size']]
+          unique_entities, unique_entities_surface_forms, max_occurred_entity_in_batch_pos = context_utils.get_batch_unique_entities(test_as_indices[4][i * model_params['batch_size']: (i + 1) * model_params['batch_size']], test_as_indices[5][i * model_params['batch_size']: (i + 1) * model_params['batch_size']])
           unique_entities_context_indices = context_utils.get_context_indices(unique_entities, unique_entities_surface_forms, context_data, idx2entity, word2idx, char_vocab, model_params['conv_filter_size'], max_sent_len=32, max_num_contexts=32, max_char_len=10, data=dataset_name)
           entities_position = context_utils.get_entity_location_unique_entities(unique_entities, entity_indices)
         if model_name=="RECON-EAC-KGGAT":
@@ -225,7 +225,7 @@ def test():
             if model_name == "RECON":
                 output = model(Variable(torch.from_numpy(sentence_input.astype(int))).cuda(), 
                                 Variable(torch.from_numpy(entity_markers.astype(int))).cuda(), 
-                                test_as_indices[3][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]],
+                                test_as_indices[3][i * model_params['batch_size']: (i + 1) * model_params['batch_size']],
                                 Variable(torch.from_numpy(unique_entities.astype(np.long))).cuda(),
                                 Variable(torch.from_numpy(entity_indices.astype(np.long))).cuda(),
                                 Variable(torch.from_numpy(unique_entities_context_indices[0].astype(np.long))).cuda(),
@@ -239,7 +239,7 @@ def test():
             elif model_name == "RECON-EAC-KGGAT":
                 output = model(Variable(torch.from_numpy(sentence_input.astype(int))).cuda(), 
                                 Variable(torch.from_numpy(entity_markers.astype(int))).cuda(), 
-                                test_as_indices[3][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]],
+                                test_as_indices[3][i * model_params['batch_size']: (i + 1) * model_params['batch_size']],
                                 Variable(torch.from_numpy(unique_entities.astype(np.long))).cuda(),
                                 Variable(torch.from_numpy(entity_indices.astype(np.long))).cuda(),
                                 Variable(torch.from_numpy(unique_entities_context_indices[0].astype(np.long))).cuda(),
@@ -251,7 +251,7 @@ def test():
             elif model_name == "RECON-EAC":
                 output = model(Variable(torch.from_numpy(sentence_input.astype(int))).cuda(), 
                                 Variable(torch.from_numpy(entity_markers.astype(int))).cuda(), 
-                                test_as_indices[3][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]],
+                                test_as_indices[3][i * model_params['batch_size']: (i + 1) * model_params['batch_size']],
                                 Variable(torch.from_numpy(unique_entities.astype(np.long))).cuda(),
                                 Variable(torch.from_numpy(entity_indices.astype(np.long))).cuda(),
                                 Variable(torch.from_numpy(unique_entities_context_indices[0].astype(np.long))).cuda(),
@@ -262,7 +262,7 @@ def test():
             elif model_name == "GPGNN":
                 output = model(Variable(torch.from_numpy(sentence_input.astype(int))).cuda(), 
                                 Variable(torch.from_numpy(entity_markers.astype(int))).cuda(), 
-                                test_as_indices[3][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]])
+                                test_as_indices[3][i * model_params['batch_size']: (i + 1) * model_params['batch_size']])
             elif model_name == "PCNN":
                 output = model(Variable(torch.from_numpy(sentence_input.astype(int))).cuda(), 
                                 Variable(torch.from_numpy(entity_markers.astype(int))).cuda(), 
