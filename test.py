@@ -57,6 +57,7 @@ def test():
     model_name = "RECON"
     load_model = "RECON-{}.out" # you should choose the proper model to load
     # device_id = 0
+    dataset_name = 'wikidata' # Options: wikidata, nyt; any new data will need to be added in the loader in semantic_graph.io
 
 
     data_folder = "./data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/enwiki-20160501/"
@@ -200,7 +201,7 @@ def test():
     print("Testing")
 
     print("Results on the test set")
-    test_set, _ = io.load_relation_graphs_from_file(data_folder + test_set, data='nyt')
+    test_set, _ = io.load_relation_graphs_from_file(data_folder + test_set, data=dataset_name)
     test_as_indices = list(graphs_to_indices(test_set, word2idx, property2idx, max_sent_len, embeddings=embeddings, position2idx=position2idx, entity2idx=entity2idx))
     
     print("Start testing!")
@@ -213,7 +214,7 @@ def test():
         if "RECON" in model_name:
           entity_indices = test_as_indices[4][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]]
           unique_entities, unique_entities_surface_forms, max_occurred_entity_in_batch_pos = context_utils.get_batch_unique_entities(test_as_indices[4][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]], test_as_indices[5][indices[i * model_params['batch_size']: (i + 1) * model_params['batch_size']]])
-          unique_entities_context_indices = context_utils.get_context_indices(unique_entities, unique_entities_surface_forms, context_data, idx2entity, word2idx, char_vocab, model_params['conv_filter_size'], max_sent_len=32, max_num_contexts=32, max_char_len=10, data='nyt')
+          unique_entities_context_indices = context_utils.get_context_indices(unique_entities, unique_entities_surface_forms, context_data, idx2entity, word2idx, char_vocab, model_params['conv_filter_size'], max_sent_len=32, max_num_contexts=32, max_char_len=10, data=dataset_name)
           entities_position = context_utils.get_entity_location_unique_entities(unique_entities, entity_indices)
         if model_name=="RECON-EAC-KGGAT":
           gat_entity_embeddings = context_utils.get_gat_entity_embeddings(entity_indices, entity2idx, idx2entity, gat_entity2idx, gat_embeddings)
