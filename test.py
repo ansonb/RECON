@@ -76,6 +76,8 @@ def test():
         gat_embedding_file = './models/GAT/WikipediaWikidataDistantSupervisionAnnotations/final_entity_embeddings.json'
         gat_entity2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entity2id.txt'
     if model_name=="RECON":
+        gat_embedding_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/final_entity_embeddings.json'
+        gat_entity2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entity2id.txt'
         gat_relation_embedding_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/final_relation_embeddings.json'
         gat_relation2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
         w_ent2rel_all_rels_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/W_ent2rel.json.npy'
@@ -108,10 +110,6 @@ def test():
     if gat_embedding_file:
       with open(gat_embedding_file, 'r') as f:
           gat_embeddings = json.load(f)
-      with open(gat_relation_embedding_file, 'r') as f:
-          gat_relation_embeddings = json.load(f)
-    if gat_relation_embedding_file:
-      W_ent2rel_all_rels = np.load(w_ent2rel_all_rels_file)
       with open(gat_entity2id_file, 'r') as f:
           gat_entity2idx = {}
           data = f.read()
@@ -120,6 +118,10 @@ def test():
             line_arr = line.split(' ')
             if len(line_arr)==2:
               gat_entity2idx[line_arr[0].strip()] = line_arr[1].strip()
+    if gat_relation_embedding_file:
+      with open(gat_relation_embedding_file, 'r') as f:
+          gat_relation_embeddings = json.load(f)
+      W_ent2rel_all_rels = np.load(w_ent2rel_all_rels_file)
       with open(gat_relation2id_file, 'r') as f:
           gat_relation2idx = {}
           data = f.read()
@@ -185,9 +187,9 @@ def test():
 
     if "RECON" not in model_name:
       model = get_model(model_name)(model_params, embeddings, max_sent_len, n_out)
-    elif model_name=="RECON-EAC":
+    elif model_name=="RECON_EAC":
       model = get_model(model_name)(model_params, embeddings, max_sent_len, n_out, char_vocab)
-    elif model_name=="RECON-EAC-KGGAT":
+    elif model_name=="RECON_EAC_KGGAT":
       model = get_model(model_name)(model_params, embeddings, max_sent_len, n_out, char_vocab)
     elif model_name=="RECON":
       model = get_model(model_name)(model_params, embeddings, max_sent_len, n_out, char_vocab, gat_relation_embeddings, W_ent2rel_all_rels, idx2property, gat_relation2idx)
