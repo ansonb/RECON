@@ -64,7 +64,7 @@ def test():
     result_folder = "result/"
 
     model_params = "model_params.json"
-    word_embeddings = "./glove.6B/glove.6B.50d.txt"
+    word_embeddings = "./data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/enwiki-20160501/glove.6B.50d.txt"
 
     test_set = "semantic-graphs-filtered-held-out.02_06.json"
     
@@ -74,11 +74,11 @@ def test():
         context_data_file = "./data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entities_context.json"
     if "KGGAT" in model_name:
         gat_embedding_file = './models/GAT/WikipediaWikidataDistantSupervisionAnnotations/final_entity_embeddings.json'
-        gat_entity2id_file = './data/GAT/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entity2id.txt'
+        gat_entity2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/entity2id.txt'
     if model_name=="RECON":
-        gat_relation_embedding_file = './re/models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/final_relation_embeddings.json'
-        gat_relation2id_file = './data/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
-        w_ent2rel_all_rels_file = './re/models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/W_ent2rel.json.npy'
+        gat_relation_embedding_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/final_relation_embeddings.json'
+        gat_relation2id_file = './data/WikipediaWikidataDistantSupervisionAnnotations.v1.0/relation2id.txt'
+        w_ent2rel_all_rels_file = './models/GAT_sep_space/WikipediaWikidataDistantSupervisionAnnotations/W_ent2rel.json.npy'
 
     use_char_vocab = False
 
