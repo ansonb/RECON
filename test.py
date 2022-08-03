@@ -216,7 +216,7 @@ def test():
           unique_entities, unique_entities_surface_forms, max_occurred_entity_in_batch_pos = context_utils.get_batch_unique_entities(test_as_indices[4][i * model_params['batch_size']: (i + 1) * model_params['batch_size']], test_as_indices[5][i * model_params['batch_size']: (i + 1) * model_params['batch_size']])
           unique_entities_context_indices = context_utils.get_context_indices(unique_entities, unique_entities_surface_forms, context_data, idx2entity, word2idx, char_vocab, model_params['conv_filter_size'], max_sent_len=32, max_num_contexts=32, max_char_len=10, data=dataset_name)
           entities_position = context_utils.get_entity_location_unique_entities(unique_entities, entity_indices)
-        if model_name=="RECON-EAC-KGGAT":
+        if model_name=="RECON_EAC_KGGAT":
           gat_entity_embeddings = context_utils.get_gat_entity_embeddings(entity_indices, entity2idx, idx2entity, gat_entity2idx, gat_embeddings)
         elif model_name=="RECON":
           gat_entity_embeddings, nonzero_gat_entity_embeddings, nonzero_entity_pos = context_utils.get_selected_gat_entity_embeddings(entity_indices, entity2idx, idx2entity, gat_entity2idx, gat_embeddings)
@@ -236,7 +236,7 @@ def test():
                                 Variable(torch.from_numpy(nonzero_gat_entity_embeddings.astype(np.float32)), requires_grad=False).cuda(),
                                 nonzero_entity_pos,
                                 Variable(torch.from_numpy(gat_entity_embeddings.astype(np.float32)), requires_grad=False).cuda())
-            elif model_name == "RECON-EAC-KGGAT":
+            elif model_name == "RECON_EAC_KGGAT":
                 output = model(Variable(torch.from_numpy(sentence_input.astype(int))).cuda(), 
                                 Variable(torch.from_numpy(entity_markers.astype(int))).cuda(), 
                                 test_as_indices[3][i * model_params['batch_size']: (i + 1) * model_params['batch_size']],
@@ -248,7 +248,7 @@ def test():
                                 Variable(torch.from_numpy(entities_position.astype(int))).cuda(),
                                 max_occurred_entity_in_batch_pos,
                                 Variable(torch.from_numpy(gat_entity_embeddings.astype(np.float32)), requires_grad=False).cuda())
-            elif model_name == "RECON-EAC":
+            elif model_name == "RECON_EAC":
                 output = model(Variable(torch.from_numpy(sentence_input.astype(int))).cuda(), 
                                 Variable(torch.from_numpy(entity_markers.astype(int))).cuda(), 
                                 test_as_indices[3][i * model_params['batch_size']: (i + 1) * model_params['batch_size']],
