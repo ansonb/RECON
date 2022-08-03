@@ -36,15 +36,15 @@ Requires `python3`, `torch>=1.4.0`
 The parameters are in the config file. 
 Download the datasets, embeddings etc. and place in the expected locations.
 
-> mkdir data
-> cd data
+> mkdir data \
+> cd data \
 > unzip WikipediaWikidataDistantSupervisionAnnotations.v1.0.zip
-> unzip glove.6B.zip
+> unzip glove.6B.zip \
 > cp glove.6B/glove.6B.50d.txt WikipediaWikidataDistantSupervisionAnnotations.v1.0/enwiki-20160501/
 
 
 In case nltk modules are not downloaded please run the below commands in a python interpreter:
-> import nltk
+> import nltk \
 > nltk.download('punkt')
 
 If there are any relations to not be trained place them in `../resources/property_blacklist.txt` else ignore the error of this file not being present.
