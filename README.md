@@ -65,4 +65,4 @@ Ensure the right model is being loaded(model/file name needs to be edited in cod
 
 
 # Acknowledgements
-The code has been adapted from [ContextAware](https://github.com/UKPLab/emnlp2017-relation-extraction) and [GPGNN](https://github.com/thunlp/GP-GNN) repositories.
+The code has been adapted from [ContextAware](https://github.com/UKPLab/emnlp2017-relation-extraction) and [GPGNN](https://github.com/thunlp/GP-GNN) repositories. Many thanks to the authors for sharing the code.
