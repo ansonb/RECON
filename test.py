@@ -171,9 +171,9 @@ def test():
         graphs_to_indices = sp_models.to_indices_with_relative_positions
     elif model_name == "GPGNN":
         graphs_to_indices = sp_models.to_indices_with_real_entities_and_entity_nums_with_vertex_padding
-    elif model_name == "RECON-EAC":
+    elif model_name == "RECON_EAC":
         graphs_to_indices = sp_models.to_indices_with_real_entities_and_entity_nums_with_vertex_padding
-    elif model_name == "RECON-EAC-KGGAT":
+    elif model_name == "RECON_EAC_KGGAT":
         graphs_to_indices = sp_models.to_indices_with_real_entities_and_entity_nums_with_vertex_padding
     elif model_name == "RECON":
         graphs_to_indices = sp_models.to_indices_with_real_entities_and_entity_nums_with_vertex_padding
